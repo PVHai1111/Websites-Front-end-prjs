@@ -32,13 +32,40 @@ html {
 }
 .heading-list {
     align-self: center;
+    z-index: 10;
+    position: relative;
+    display: block;
 }
 .heading-link{
     color : white;
     text-decoration: none;
     display : inline-block;
     padding : 8px 24px;
+    position: relative;
+    z-index: 10;
+    transition: all .2s .2s
 }
+.heading-link:visited{
+    z-index: 10;
+}
+.heading-link:link{
+    z-index: 10;
+}
+.heading-list::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    width: 3px;
+    transform: scaleY(0);
+    transition: transform .2s, width cubic-bezier(.27,1.02,.7,.97) .2s .2s,
+        background-color .1s;
+}
+
+
+
 .heading-link i{
     font-size: 20px;
 }
@@ -48,18 +75,24 @@ html {
     border-radius: 50%;
     margin-right: 12px;
 }
-.heading-link:hover {
-    background-color: white;
+.heading-list:hover::before {
+    transform: scaleY(1);
+    width: 100%;
     color : black;
+    background-color: rgb(255, 255, 255);
+    
 }
-.heading-special {
+.heading-link:hover{
+    color: black;
+}
+/* .heading-special {
     background-color: #3a4b53;
 
-}
-.heading-special:hover ,.heading-special1:hover{
+} */
+/* .heading-special:hover ,.heading-special1:hover{
     background-color: #ccc;
     color : black;
-}
+} */
 
 .heading-big {
     position: relative;
